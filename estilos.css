@@ -1,0 +1,124 @@
+:root {
+  --azul: #1F4E79;
+  --azul-oscuro: #163A5A;
+  --fondo: #F4F6F8;
+  --borde: #D6DEE5;
+  --rojo: #B4322B;
+  --naranja: #D2601A;
+  --amarillo: #B7791F;
+  --celeste: #3B6FA8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  background: var(--fondo);
+}
+
+header {
+  height: 60px;
+  padding: 0 24px;
+  background: var(--azul-oscuro);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contenedor {
+  display: flex;
+}
+
+nav {
+  width: 236px;
+  padding: 16px;
+  background: #fff;
+}
+
+nav a {
+  display: block;
+  padding: 10px 0;
+}
+
+main {
+  flex: 1;
+  padding: 24px;
+}
+
+footer {
+  padding: 14px 24px;
+  background: #fff;
+  font-size: 12px;
+}
+
+h1, h2 {
+  margin-bottom: 12px;
+}
+
+.filtros input, .filtros select, .acciones button {
+  margin: 0 8px 8px 0;
+  padding: 6px;
+}
+
+/* Tabla con filas flex (así se pueden ordenar con "order") */
+table, thead {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  background: #fff;
+}
+
+tbody {
+  display: flex;
+  flex-direction: column;
+}
+
+tr {
+  display: flex;
+  border-bottom: 1px solid var(--borde);
+}
+
+th, td {
+  flex: 1;
+  padding: 12px 8px;
+  text-align: left;
+}
+
+.chk {
+  flex: 0 0 40px;
+}
+
+/* Colores de prioridad */
+.critica { color: var(--rojo); }
+.alta { color: var(--naranja); }
+.media { color: var(--amarillo); }
+.baja { color: var(--celeste); }
+
+/* Ventanas (modales) */
+.modal {
+  display: none;
+  position: fixed;
+  top: 100px;
+  left: 35%;
+  width: 400px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--azul);
+}
+
+.modal select, .modal textarea {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 800px) {
+  nav { display: none; }
+}
