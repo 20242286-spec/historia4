@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cola de atención</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <header>
+    <strong>Mesa de Ayuda</strong>
+    <span>Lucía Mendoza Ríos · Supervisor</span>
+  </header>
+
+  <div class="contenedor">
+    <nav>
+      <a href="cola.html">Cola de atención</a>
+      <a href="bandeja.html">Bandeja del técnico</a>
+    </nav>
+
+    <main>
+      <h1>Cola de atención</h1>
+
+      <div class="filtros">
+        <input type="text" id="buscar" placeholder="Código, asunto o usuario" onkeyup="filtrar()">
+
+        <select id="fCat" onchange="filtrar()">
+          <option value="">Categoría: todas</option>
+          <option>Audiovisuales</option>
+          <option>Redes</option>
+          <option>Climatización</option>
+          <option>Mobiliario</option>
+        </select>
+
+        <select id="fPri" onchange="filtrar()">
+          <option value="">Prioridad: todas</option>
+          <option>Crítica</option>
+          <option>Alta</option>
+          <option>Media</option>
+          <option>Baja</option>
+        </select>
+
+        <select id="fAmb" onchange="filtrar()">
+          <option value="">Ambiente: todos</option>
+          <option>A-201</option>
+          <option>H-210</option>
+          <option>E-304</option>
+          <option>Q-101</option>
+        </select>
+
+        <select id="fEst" onchange="filtrar()">
+          <option value="">Estado: todos</option>
+          <option>Abierto</option>
+          <option>En atención</option>
+          <option>En espera</option>
+        </select>
+
+        <select id="orden" onchange="ordenar()">
+          <option value="antiguedad">Ordenar por antigüedad</option>
+          <option value="prioridad">Ordenar por prioridad</option>
+          <option value="sinatencion">Ordenar por tiempo sin atención</option>
+        </select>
+      </div>
+
+      <div class="acciones">
+        <button onclick="mostrar('modalAsignar')">Asignar seleccionados</button>
+        <button onclick="mostrar('modalPrioridad')">Cambiar prioridad</button>
+        <button onclick="devolver()">Devolver a la cola</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th class="chk"></th>
+            <th>Código</th>
+            <th>Asunto</th>
+            <th>Categoría</th>
+            <th>Ambiente</th>
+            <th>Solicitante</th>
+            <th>Prioridad</th>
+            <th>Estado</th>
+            <th>Técnico</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="fila1" data-min="18" data-idle="18" data-pri="1">
+            <td class="chk"><input type="checkbox" id="chk1"></td>
+            <td>TCK-2026-00147</td>
+            <td>Proyector no enciende</td>
+            <td>Audiovisuales</td>
+            <td>A-201</td>
+            <td>Camila Quispe</td>
+            <td id="pri1" class="critica">Crítica</td>
+            <td id="est1">Abierto</td>
+            <td id="tec1">Sin asignar</td>
+          </tr>
+          <tr id="fila2" data-min="42" data-idle="42" data-pri="1">
+            <td class="chk"><input type="checkbox" id="chk2"></td>
+            <td>TCK-2026-00146</td>
+            <td>Punto de red caído</td>
+            <td>Redes</td>
+            <td>H-210</td>
+            <td>Renzo Salazar</td>
+            <td id="pri2" class="critica">Crítica</td>
+            <td id="est2">Abierto</td>
+            <td id="tec2">Sin asignar</td>
+          </tr>
+          <tr id="fila3" data-min="70" data-idle="15" data-pri="2">
+            <td class="chk"><input type="checkbox" id="chk3"></td>
+            <td>TCK-2026-00145</td>
+            <td>Aire acondicionado sin frío</td>
+            <td>Climatización</td>
+            <td>E-304</td>
+            <td>Milagros Ccahuana</td>
+            <td id="pri3" class="alta">Alta</td>
+            <td id="est3">En atención</td>
+            <td id="tec3">Hernán Loayza</td>
+          </tr>
+          <tr id="fila4" data-min="195" data-idle="120" data-pri="3">
+            <td class="chk"><input type="checkbox" id="chk4"></td>
+            <td>TCK-2026-00141</td>
+            <td>Cinco sillas rotas</td>
+            <td>Mobiliario</td>
+            <td>A-201</td>
+            <td>Rosa Ticona</td>
+            <td id="pri4" class="media">Media</td>
+            <td id="est4">En espera</td>
+            <td id="tec4">Marco Huamán</td>
+          </tr>
+          <tr id="fila5" data-min="305" data-idle="305" data-pri="4">
+            <td class="chk"><input type="checkbox" id="chk5"></td>
+            <td>TCK-2026-00138</td>
+            <td>Pantalla no baja</td>
+            <td>Audiovisuales</td>
+            <td>Q-101</td>
+            <td>Gabriela Ynga</td>
+            <td id="pri5" class="baja">Baja</td>
+            <td id="est5">Abierto</td>
+            <td id="tec5">Sin asignar</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <footer>Mesa de Ayuda de Servicios del Campus · Universidad de Lima</footer>
+
+  <!-- Ventana para asignar / reasignar -->
+  <div class="modal" id="modalAsignar">
+    <h3>Asignar técnico</h3>
+    <select id="selTec">
+      <option>Julio Paredes</option>
+      <option>Marco Huamán</option>
+      <option>Iván Zegarra</option>
+      <option>Hernán Loayza</option>
+    </select>
+    <textarea id="motivoAsignar" rows="3" placeholder="Motivo (obligatorio si ya tenía técnico)"></textarea>
+    <button onclick="asignar()">Asignar</button>
+    <button onclick="ocultar('modalAsignar')">Cancelar</button>
+  </div>
+
+  <!-- Ventana para cambiar prioridad -->
+  <div class="modal" id="modalPrioridad">
+    <h3>Cambiar prioridad</h3>
+    <select id="selPri">
+      <option>Crítica</option>
+      <option>Alta</option>
+      <option>Media</option>
+      <option>Baja</option>
+    </select>
+    <textarea id="motivoPri" rows="3" placeholder="Motivo (obligatorio)"></textarea>
+    <button onclick="cambiarPrioridad()">Guardar</button>
+    <button onclick="ocultar('modalPrioridad')">Cancelar</button>
+  </div>
+
+  <script src="cola.js"></script>
+</body>
+</html>
