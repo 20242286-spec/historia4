@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi bandeja</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <header>
+    <strong>Mesa de Ayuda</strong>
+    <span>Julio Paredes Soto · Técnico</span>
+  </header>
+
+  <div class="contenedor">
+    <nav>
+      <a href="bandeja.html">Mi bandeja</a>
+      <a href="cola.html">Cola de atención</a>
+    </nav>
+
+    <main>
+      <h1>Mi bandeja</h1>
+      <p>
+        Abiertos: <strong id="nAbiertos">1</strong> ·
+        En atención: <strong>1</strong> ·
+        En espera: <strong>1</strong> ·
+        Resueltos: <strong>1</strong>
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Asunto</th>
+            <th>Categoría</th>
+            <th>Prioridad</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TCK-2026-00147</td>
+            <td>Proyector no enciende</td>
+            <td>Audiovisuales</td>
+            <td class="critica">Crítica</td>
+            <td>Abierto</td>
+          </tr>
+          <tr>
+            <td>TCK-2026-00124</td>
+            <td>Punto de red sin enlace</td>
+            <td>Redes</td>
+            <td class="alta">Alta</td>
+            <td>En atención</td>
+          </tr>
+          <tr>
+            <td>TCK-2026-00126</td>
+            <td>Proyector con imagen verdosa</td>
+            <td>Audiovisuales</td>
+            <td class="media">Media</td>
+            <td>En espera</td>
+          </tr>
+          <tr>
+            <td>TCK-2026-00134</td>
+            <td>Micrófono sin señal</td>
+            <td>Audiovisuales</td>
+            <td class="baja">Baja</td>
+            <td>Resuelto</td>
+          </tr>
+
+          <!-- Filas ocultas: aparecen al autoasignarse -->
+          <tr id="mio1" style="display:none">
+            <td>TCK-2026-00146</td>
+            <td>Punto de red caído</td>
+            <td>Redes</td>
+            <td class="critica">Crítica</td>
+            <td>Abierto</td>
+          </tr>
+          <tr id="mio2" style="display:none">
+            <td>TCK-2026-00138</td>
+            <td>Pantalla no baja</td>
+            <td>Audiovisuales</td>
+            <td class="baja">Baja</td>
+            <td>Abierto</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Disponibles en mis categorías</h2>
+      <table>
+        <tbody>
+          <tr id="libre1">
+            <td>TCK-2026-00146</td>
+            <td>Punto de red caído</td>
+            <td>Redes</td>
+            <td class="critica">Crítica</td>
+            <td><button onclick="autoasignar(1)">Autoasignarme</button></td>
+          </tr>
+          <tr id="libre2">
+            <td>TCK-2026-00138</td>
+            <td>Pantalla no baja</td>
+            <td>Audiovisuales</td>
+            <td class="baja">Baja</td>
+            <td><button onclick="autoasignar(2)">Autoasignarme</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <footer>Mesa de Ayuda de Servicios del Campus · Universidad de Lima</footer>
+
+  <script src="bandeja.js"></script>
+</body>
+</html>
